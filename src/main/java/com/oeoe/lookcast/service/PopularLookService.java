@@ -12,7 +12,7 @@ public class PopularLookService {
   private final PopularLookRepository popularLookRepository;
 
   public void plusPopularLook(String gender, String location, List<String> codeSet) {
-    String key = getKey(gender, location);
+    String key = getKey(gender, location.replace(" ", ""));
     String normalizedCombination = normalizeLookCombination(codeSet);
     popularLookRepository.incrementLookScore(key, normalizedCombination);
   }
@@ -26,7 +26,8 @@ public class PopularLookService {
     return String.join(", ", codeSet);
   }
 
-  public List<String> getPopularLookListByPlace(String location) {
-    return popularLookRepository.getTopOutfits(location, 3);
+  public List<String> getPopularLookListByPlace(String gender, String location) {
+    String key = getKey(gender, location);
+    return popularLookRepository.getTopOutfits(key, 5);
   }
 }
