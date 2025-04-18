@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(
     name = "geminiFeignClient",
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent",
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
     configuration = GeminiFeignConfig.class)
 public interface GeminiFeignClient {
   @PostMapping
