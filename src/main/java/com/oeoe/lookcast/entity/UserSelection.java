@@ -30,24 +30,11 @@ public class UserSelection {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "request_id", nullable = false)
-  private OutfitRequest request;
-
   @Column(nullable = false, length = 20)
   private String gender;
 
-  @Column(nullable = false)
-  private Integer age;
-
   @Column(nullable = false, length = 100)
   private String location;
-
-  @Column(name = "weather_status", length = 50)
-  private String weatherStatus;
-
-  @Column
-  private Double temperature;
 
   @Column(name = "top_code", length = 30)
   private String topCode;
