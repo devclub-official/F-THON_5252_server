@@ -58,12 +58,6 @@ public class UserSelection {
   @Column(name = "outer_code", length = 30)
   private String outerCode;
 
-  @Column(name = "shoes_code", length = 30)
-  private String shoesCode;
-
-  @Column(name = "accessory_code", length = 30)
-  private String accessoryCode;
-
   @Column(name = "selection_time", nullable = false)
   private LocalDateTime selectionTime;
 }

@@ -1,6 +1,7 @@
 package com.oeoe.lookcast.service;
 
-public interface AIRecommendationService {
+import com.oeoe.lookcast.dto.RecommendationResponse;
 
-  String getMessageFromAIAgent();
+public interface AIRecommendationService {
+  RecommendationResponse getMessageFromAIAgent();
 }
