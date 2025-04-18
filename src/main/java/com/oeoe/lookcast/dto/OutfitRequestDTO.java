@@ -1,38 +1,63 @@
 package com.oeoe.lookcast.dto;
 
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-/**
- * 사용자의 코디 추천 요청 정보 DTO
- */
-@Getter
-@Setter
+import java.time.LocalDateTime;
+
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@ToString
 public class OutfitRequestDTO {
   private Long id;
-  private String gender;              // 성별 (male, female)
-  private Integer age;                // 나이
-  private String stylePreference;     // 선호 스타일 (캐주얼, 모던 등)
-  private String purpose;             // 목적 (데이트, 출근, 여행 등)
+  private String gender;
+  private Integer age;
+  private String stylePreference;
+  private String purpose;
+  private Double currentLatitude;
+  private Double currentLongitude;
+  private String currentLocationName;
+  private Double destinationLatitude;
+  private Double destinationLongitude;
+  private String destinationLocationName;
 
-  // 현재 위치 정보
-  private Double currentLatitude;     // 현재 위치 위도
-  private Double currentLongitude;    // 현재 위치 경도
-  private String currentLocationName; // 현재 위치 이름
+  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+  private LocalDateTime requestTime;
 
-  // 목적지 정보
-  private Double destinationLatitude;     // 목적지 위도
-  private Double destinationLongitude;    // 목적지 경도
-  private String destinationLocationName; // 목적지 이름
+  private WeatherData weather;
 
-  private LocalDateTime requestTime;      // 요청 시간
+  @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class WeatherData {
+    private LocationWeather current;
+    private LocationWeather destination;
+  }
+
+  @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class LocationWeather {
+    private WeatherPoint current;
+    private WeatherPoint after3h;
+    private WeatherPoint after6h;
+    private WeatherPoint after9h;
+  }
+
+  @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class WeatherPoint {
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime time;
+    private Double temp;
+    private Double humidity;
+    private String description;
+    private Double windSpeed;
+    private Double precipitation;
+  }
 }

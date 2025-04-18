@@ -30,4 +30,6 @@ public class PopularLookService {
     String key = getKey(gender, location);
     return popularLookRepository.getTopOutfits(key, 5);
   }
+
+
 }
