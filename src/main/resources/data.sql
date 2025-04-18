@@ -111,19 +111,6 @@ VALUES (3, FALSE, '2025-04-18 10:45:00', 19.2, '맑음', 45.0, 0.0, 3.5), -- 현
        (3, TRUE, '2025-04-18 11:30:00', 19.5, '맑음', 44.0, 0.0, 3.6);
 -- 목적지, 도착 예상 시간
 
--- 사용자 선택 데이터 삽입 (수정된 테이블 구조)
-INSERT INTO user_selection (request_id, gender, age, location, weather_status, temperature,
-                            top_code, bottom_code, outer_code, shoes_code, accessory_code,
-                            selection_time)
-VALUES (1, 'male', 25, '서울시 강남구', '맑음', 17.5,
-        'TOP_TSHIRT_SHORT', 'BOTTOM_JEANS', 'OUTER_HOODIE_ZIP', NULL, NULL,
-        '2025-04-18 14:35:00'),
-       (2, 'female', 30, '서울시 강남구', '흐림', 16.8,
-        'TOP_SHIRT', 'BOTTOM_SLACKS', 'OUTER_BLAZER', 'SHOES_FORMAL', NULL,
-        '2025-04-18 08:20:00'),
-       (3, 'male', 22, '부산시 해운대구', '맑음', 19.2,
-        'TOP_POLO', 'BOTTOM_SHORTS', NULL, 'SHOES_SNEAKERS', 'ACC_HAT',
-        '2025-04-18 10:50:00');
 -- 사용자 선택 데이터 삽입
 INSERT INTO user_selection (
     request_id, gender, age, location, weather_status, temperature,
