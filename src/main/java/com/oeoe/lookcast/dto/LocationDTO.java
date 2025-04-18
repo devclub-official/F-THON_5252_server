@@ -1,8 +1,12 @@
 package com.oeoe.lookcast.dto;
 
-import lombok.*;
 
-import java.math.BigDecimal;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * 위치 정보 DTO
@@ -12,8 +16,10 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class LocationDTO {
-    private BigDecimal latitude;
-    private BigDecimal longitude;
-    private String locationName;
+
+  private Double latitude;     // 위도
+  private Double longitude;    // 경도
+  private String locationName; // 위치명
 }
