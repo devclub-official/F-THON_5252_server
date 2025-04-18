@@ -56,41 +56,73 @@ public class PromptUtils {
 
   public static String CLOTHES_CATEGORY =
 """
-옷 아이템 카테고리는 다음과 같이 있어
-## 의류 카테고리 (각 아이템은 다른 아이템과 어울리는 조합으로 추천해주세요)
+옷 아이템 카테고리는 다음과 같이 있어 이 안에서 추천해줘야돼.
+INSERT INTO clothing_type (category_id, code, name, image_url)
+VALUES (1, 'TOP_TSHIRT_SHORT', '반팔 티셔츠', 'https://example.com/images/short_tshirt.jpg'),
+       (1, 'TOP_TSHIRT_LONG', '긴팔 티셔츠', 'https://example.com/images/long_tshirt.jpg'),
+       (1, 'TOP_SWEATSHIRT', '맨투맨', 'https://example.com/images/sweatshirt.jpg'),
+       (1, 'TOP_HOODIE', '후드 티셔츠', 'https://example.com/images/hoodie_tshirt.jpg'),
+       (1, 'TOP_SHIRT', '셔츠', 'https://example.com/images/shirt.jpg'),
+       (1, 'TOP_POLO', '카라 티셔츠/폴로', 'https://example.com/images/polo.jpg'),
+       (1, 'TOP_KNIT', '니트/스웨터', 'https://example.com/images/sweater.jpg'),
+       (1, 'TOP_SLEEVELESS', '민소매/나시', 'https://example.com/images/sleeveless.jpg');
 
-### 상의
-- 티셔츠: 반팔 티셔츠, 긴팔 티셔츠, 카라 티셔츠/폴로, 민소매/나시
-- 셔츠/블라우스: 캐주얼 셔츠, 정장 셔츠, 블라우스, 플란넬 셔츠
-- 니트/스웨터: 라운드넥 니트, 터틀넥, 가디건, 브이넥 니트
-- 후드/맨투맨: 맨투맨, 후드 티셔츠, 집업 후드
+-- 의류 유형 데이터 삽입 (아우터)
+INSERT INTO clothing_type (category_id, code, name, image_url)
+VALUES (2, 'OUTER_HOODIE_ZIP', '후드 집업', 'https://example.com/images/hoodie_zip.jpg'),
+       (2, 'OUTER_BOMBER', '항공점퍼(블루종)', 'https://example.com/images/bomber.jpg'),
+       (2, 'OUTER_LEATHER', '가죽 재킷', 'https://example.com/images/leather_jacket.jpg'),
+       (2, 'OUTER_CARDIGAN', '카디건', 'https://example.com/images/cardigan.jpg'),
+       (2, 'OUTER_DENIM', '데님 재킷', 'https://example.com/images/denim_jacket.jpg'),
+       (2, 'OUTER_BLAZER', '정장 재킷/블레이저', 'https://example.com/images/blazer.jpg'),
+       (2, 'OUTER_STADIUM', '스타디움 재킷', 'https://example.com/images/stadium_jacket.jpg'),
+       (2, 'OUTER_WINDBREAKER', '바람막이/윈드브레이커', 'https://example.com/images/windbreaker.jpg'),
+       (2, 'OUTER_ANORAK', '아노락', 'https://example.com/images/anorak.jpg'),
+       (2, 'OUTER_TRAINING', '트레이닝 자켓', 'https://example.com/images/training_jacket.jpg'),
+       (2, 'OUTER_LIGHT_COAT', '가벼운 코트', 'https://example.com/images/light_coat.jpg'),
+       (2, 'OUTER_SAFARI', '사파리 재킷', 'https://example.com/images/safari_jacket.jpg'),
+       (2, 'OUTER_VEST', '조끼/베스트', 'https://example.com/images/vest.jpg'),
+       (2, 'OUTER_SHORT_PADDING', '숏패딩', 'https://example.com/images/short_padding.jpg'),
+       (2, 'OUTER_MUSTANG', '무스탕', 'https://example.com/images/mustang.jpg'),
+       (2, 'OUTER_FLEECE', '플리스', 'https://example.com/images/fleece.jpg'),
+       (2, 'OUTER_COAT', '코트', 'https://example.com/images/coat.jpg'),
+       (2, 'OUTER_LONG_PADDING', '롱패딩', 'https://example.com/images/long_padding.jpg'),
+       (2, 'OUTER_PADDING_VEST', '패딩 조끼', 'https://example.com/images/padding_vest.jpg');
 
-### 아우터
-- 가벼운 아우터: 바람막이, 데님 재킷, 가디건, 숄/망토
-- 중간 두께 아우터: 가죽 재킷, 트렌치코트, 블레이저, 스타디움 재킷, 항공점퍼(블루종)
-- 두꺼운 아우터: 코트, 숏패딩, 롱패딩, 무스탕, 플리스, 패딩 조끼
-- 특수 기능성 아우터: 레인코트, 윈드브레이커, 아노락
+-- 의류 유형 데이터 삽입 (바지)
+INSERT INTO clothing_type (category_id, code, name, image_url)
+VALUES (3, 'BOTTOM_JEANS', '청바지/데님', 'https://example.com/images/jeans.jpg'),
+       (3, 'BOTTOM_JOGGER', '트레이닝/조거 팬츠', 'https://example.com/images/jogger.jpg'),
+       (3, 'BOTTOM_COTTON', '면바지', 'https://example.com/images/cotton_pants.jpg'),
+       (3, 'BOTTOM_SLACKS', '정장 바지/슬랙스', 'https://example.com/images/slacks.jpg'),
+       (3, 'BOTTOM_SHORTS', '반바지', 'https://example.com/images/shorts.jpg'),
+       (3, 'BOTTOM_LEGGINGS', '레깅스', 'https://example.com/images/leggings.jpg'),
+       (3, 'BOTTOM_JUMPSUIT', '점프수트/오버올', 'https://example.com/images/jumpsuit.jpg');
 
-### 하의
-- 긴 바지: 청바지/데님, 슬랙스, 면바지, 트레이닝/조거 팬츠, 와이드 팬츠
-- 짧은 바지: 반바지, 숏팬츠, 버뮤다 팬츠
-- 레깅스/타이츠: 스포츠 레깅스, 보온 타이츠
-- 원피스/스커트: 미니스커트, 미디스커트, 롱스커트, 플리츠 스커트, 원피스
+-- 의류 유형 데이터 삽입 (원피스/스커트)
+INSERT INTO clothing_type (category_id, code, name, image_url)
+VALUES (4, 'ONEPIECE_DRESS', '원피스', 'https://example.com/images/dress.jpg'),
+       (4, 'ONEPIECE_SKIRT', '스커트', 'https://example.com/images/skirt.jpg');
 
-### 신발
-- 캐주얼 슈즈: 스니커즈/운동화, 캔버스화, 슬립온
-- 포멀 슈즈: 로퍼, 옥스포드, 더비, 구두, 플랫슈즈
-- 계절성 신발: 부츠, 레인부츠, 방한화/털신, 샌들, 뮬
-- 스포츠화: 러닝화, 트레킹화, 트레이닝화
+-- 의류 유형 데이터 삽입 (신발)
+INSERT INTO clothing_type (category_id, code, name, image_url)
+VALUES (5, 'SHOES_SNEAKERS', '스니커즈/운동화', 'https://example.com/images/sneakers.jpg'),
+       (5, 'SHOES_WINTER', '방한화/털신', 'https://example.com/images/winter_shoes.jpg'),
+       (5, 'SHOES_BOOTS', '부츠', 'https://example.com/images/boots.jpg'),
+       (5, 'SHOES_FORMAL', '구두', 'https://example.com/images/dress_shoes.jpg'),
+       (5, 'SHOES_SANDALS', '샌들/슬리퍼', 'https://example.com/images/sandals.jpg'),
+       (5, 'SHOES_SPORTS', '스포츠화', 'https://example.com/images/sports_shoes.jpg');
 
-### 액세서리/패션소품
-- 헤드웨어: 모자, 베레모, 버킷햇, 비니
-- 목/어깨 아이템: 스카프, 목도리, 숄
-- 손 아이템: 장갑, 워머
-- 기타: 양말, 스타킹, 선글라스/안경, 우산, 가방
-  """;
+-- 의류 유형 데이터 삽입 (액세서리/패션소품)
+INSERT INTO clothing_type (category_id, code, name, image_url)
+VALUES (6, 'ACC_HAT', '모자', 'https://example.com/images/hat.jpg'),
+       (6, 'ACC_SCARF', '목도리/스카프', 'https://example.com/images/scarf.jpg'),
+       (6, 'ACC_SOCKS', '양말', 'https://example.com/images/socks.jpg'),
+       (6, 'ACC_GLASSES', '선글라스/안경', 'https://example.com/images/glasses.jpg');
+""";
 
   public static String QUESTION_PROMPT =
+
 """
 이제 사용자의 정보(연령대, 성별, 선호스타일)와 오늘의 날짜와 요청시간,
 날씨 정보(기온, 습도, 강수확률, 풍속, 자외선 지수),
