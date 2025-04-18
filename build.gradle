@@ -13,6 +13,10 @@ java {
 	}
 }
 
+bootJar {
+	archiveFileName = 'lookcast.jar'
+}
+
 ext {
 	springCloudVersion = '2023.0.3'
 }
